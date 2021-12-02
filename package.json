@@ -14,7 +14,6 @@
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
-    "vue-dndrop": "^1.1.12",
     "vue2-dragula": "^2.5.5"
   },
   "devDependencies": {
