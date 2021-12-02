@@ -18,7 +18,7 @@
         <button
           v-for="{ title, filter } in buttons"
           :key="filter"
-          class="text-black font-semibold hover:text-green-500 px-2 py-1 transition-normal"
+          class="text-black font-semibold hover:text-green-500 px-2 py-1 transition-normal menu-button"
           @click="itemFilter = filter"
         >
           {{ title }}
@@ -62,8 +62,12 @@
         <figure
           v-for="item in itemsDest"
           :key="item.id"
-          class="js-snippet w-1/2 p-2 vue-element"
+          class="js-snippet w-1/2 p-2 vue-element relative"
         >
+          <div
+            class='bg-white hidden absolute top-0 left-0 js-delete-btn px-4 py-2 shadow'
+            @click="removeItem(item)"
+          ><i class='far fa-trash-alt pointer-events-none'></i></div>
           <img
             :src="`/images/${item.image}.png`"
             alt=""
@@ -100,6 +104,7 @@
 </template>
 
 <script>
+import imagesLoaded from "imagesloaded";
 export default {
   data() {
     return {
@@ -229,24 +234,27 @@ export default {
   },
   mounted() {
     if (typeof window !== 'undefined') {
-      ;['resize', 'load'].forEach((event) => {
+      const snippets = document.querySelector(".js-snippets");
+      ['resize', 'load'].forEach((event) => {
         window.addEventListener(event, () => {
-          this.masonry('.js-snippets', '.js-snippet', 0, 2, 2, 1)
+          imagesLoaded(snippets, () => {
+            this.masonry('.js-snippets', '.js-snippet', 0, 2, 2, 1)
+          })
         })
       })
     }
   },
   methods: {
+    removeItem(item) {
+      this.itemsDest = this.itemsDest.filter(dest => dest !== item)
+    },
     masonry(grid, gridCell, gridGutter, dGridCol, tGridCol, mGridCol) {
-      // const g = document.querySelector(grid)
       const gc = document.querySelectorAll(gridCell)
       const gcLength = gc.length
       let gHeight = 0
-
       for (let i = 0; i < gcLength; ++i) {
         gHeight += gc[i].offsetHeight + parseInt(gridGutter)
       }
-
       if (window.screen.width >= 1024) {
         this.gHeight =
           gHeight / dGridCol + gHeight / (gcLength + 1) + 100 + 'px'
@@ -275,5 +283,9 @@ export default {
 .js-droppable > .js-snippet > img:hover {
   transform: none;
   border-color: #dae1e7;
+}
+.menu-button::after {
+  content: " ";
+  display: inline-block;
 }
 </style>
