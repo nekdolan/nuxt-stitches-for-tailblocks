@@ -15,7 +15,12 @@
           {{ title }}
         </button>
       </div>
-      <div v-dragula="items" class="flex flex-wrap flex-col items-start justify-start js-snippets" drake='first'>
+      <div
+        v-dragula="items"
+        :style='(gHeight ? "height: "+ gHeight : "")'
+        class="flex flex-wrap flex-col items-start justify-start js-snippets"
+        drake='first'
+      >
         <figure
           v-for='item in items'
           v-show='itemFilter === "js-snippet" || itemFilter === item.type'
@@ -71,6 +76,7 @@ export default {
     return {
       itemFilter: 'js-snippet',
       drag: false,
+      gHeight: '',
       itemsDest: [],
       items: [
         { image: 'blog-1', width: '1/2', type: 'st-blog' },
@@ -187,6 +193,36 @@ export default {
       })
     }
   },
+  mounted() {
+    if (typeof window !== 'undefined') {
+      ["resize", "load"].forEach((event) => {
+        window.addEventListener(event, () => {
+          this.masonry(".js-snippets", ".js-snippet", 0, 2, 2, 1);
+        });
+      });
+    }
+  },
+  methods: {
+    masonry(grid, gridCell, gridGutter, dGridCol, tGridCol, mGridCol) {
+      // const g = document.querySelector(grid)
+      const gc = document.querySelectorAll(gridCell)
+      const gcLength = gc.length
+      let gHeight = 0
+
+      for (let i = 0; i < gcLength; ++i) {
+        gHeight += gc[i].offsetHeight + parseInt(gridGutter);
+      }
+
+      if (window.screen.width >= 1024) {
+        this.gHeight = gHeight / dGridCol + gHeight / (gcLength + 1) + 100 + 'px'
+      } else if (window.screen.width < 1024 && window.screen.width >= 768) {
+        this.gHeight = gHeight / tGridCol + gHeight / (gcLength + 1) + 'px'
+      } else {
+        this.gHeight = gHeight / mGridCol + gHeight / (gcLength + 1) + 'px'
+      }
+      console.log(this.gHeight)
+    }
+  }
 }
 </script>
 
