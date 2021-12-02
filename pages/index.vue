@@ -61,12 +61,13 @@
       >
         <figure
           v-for="item in itemsDest"
+          v-show="!hiddenItemIds.includes(item.id)"
           :key="item.id"
           class="js-snippet w-1/2 p-2 vue-element relative"
         >
           <div
-            class='bg-white hidden absolute top-0 left-0 js-delete-btn px-4 py-2 shadow'
-            @click="removeItem(item)"
+            class='remove-button bg-white hidden absolute top-0 left-0 js-delete-btn px-4 py-2 shadow'
+            @click="removeItem(item.id)"
           ><i class='far fa-trash-alt pointer-events-none'></i></div>
           <img
             :src="`/images/${item.image}.png`"
@@ -111,6 +112,7 @@ export default {
       itemFilter: 'js-snippet',
       drag: false,
       gHeight: '',
+      hiddenItemIds: [],
       itemsDest: [],
       items: [
         { image: 'blog-1', width: '1/2', type: 'st-blog' },
@@ -245,8 +247,8 @@ export default {
     }
   },
   methods: {
-    removeItem(item) {
-      this.itemsDest = this.itemsDest.filter(dest => dest !== item)
+    removeItem(itemId) {
+      this.hiddenItemIds = [...this.hiddenItemIds, itemId]
     },
     masonry(grid, gridCell, gridGutter, dGridCol, tGridCol, mGridCol) {
       const gc = document.querySelectorAll(gridCell)
@@ -287,5 +289,8 @@ export default {
 .menu-button::after {
   content: " ";
   display: inline-block;
+}
+.remove-button {
+  z-index: 100;
 }
 </style>
