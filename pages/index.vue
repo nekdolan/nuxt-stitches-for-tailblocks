@@ -176,6 +176,7 @@ export default {
     if (this.$dragula) {
       const service = this.$dragula.$service
       service.options('first', {
+        revertOnSpill: true,
         copySortSource: false,
         copy (el, source) {
           return source.classList.contains('js-snippets')
