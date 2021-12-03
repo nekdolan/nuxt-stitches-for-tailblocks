@@ -50,6 +50,7 @@
       <header class="mb-4">
         <button
           class="shadow text-center py-3 px-4 bg-black w-full hover:text-green-500 text-white js-download transition-normal"
+          @click="generateHtml"
         >
           Generate HTML File with Functional CSS
         </button>
@@ -182,6 +183,11 @@ export default {
     }
   },
   computed: {
+    list() {
+      return this.itemsDest
+        .filter(item => !this.hiddenItemIds.includes(item.id))
+        .map(item => item.image)
+    },
     buttons() {
       return [
         { title: 'All', filter: 'js-snippet' },
@@ -244,9 +250,17 @@ export default {
           })
         })
       })
+      imagesLoaded(snippets, () => {
+        this.masonry('.js-snippets', '.js-snippet', 0, 2, 2, 1)
+      })
     }
   },
   methods: {
+    generateHtml() {
+      if (this.list && this.list.length) {
+        this.$download(this.list)
+      }
+    },
     removeItem(itemId) {
       this.hiddenItemIds = [...this.hiddenItemIds, itemId]
     },
