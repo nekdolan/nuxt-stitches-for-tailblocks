@@ -1,4 +1,17 @@
-# stitches2021
+# Nuxt Stitches for tailblocks
+
+Special thanks to [LPX55](https://github.com/LPX55) for funding this project.
+
+A simple, fast web app to generate html based on a collection of commonly used user interface patterns.
+
+Drag & Drop elements to visually create a template for your landing page!
+
+Based on [Stitches](https://stitches.hyperyolo.com) and [tailblocks](https://mertjf.github.io/tailblocks/)
+and [https://stitches-for-tailblocks.netlify.app/](https://stitches-for-tailblocks.netlify.app/) .
+
+## 🎏 Live Site: [https://nekdolan.github.io/nuxt-stitches-for-tailblocks/](https://nekdolan.github.io/nuxt-stitches-for-tailblocks/)
+
+[![Stitches-for-tailblocks.png](https://i.postimg.cc/zG500VVZ/Stitches-for-tailblocks.png)](https://postimg.cc/HVZwLWwB)
 
 ## Build Setup
 
@@ -19,51 +32,22 @@ $ npm run generate
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
-## Special Directories
+## Make your own templates
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+Feel free to take this project and re-factor to your need! Not everyone wants these templates for their projects. Here are the steps:
 
-### `assets`
+1. Run the project locally (see the section above)
+2. Use [200 ok](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en) to run the repo in browser (because file download requires http).
+3. Add your own HTML template (with tailwind.css classes) into the `templates` folder
+4. Add a filter button for it in the `index.html`. (i.e. add `<button class="text-black font-semibold hover:text-green-500 px-2 py-1 transition-normal" data-filter="st-<your template name>">Tabs</button>`)
+5. Done! refresh to check out your own templates.
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+## License
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+MIT © [Amie Chen](https://amie-chen.com) - Stiches Template Generator
 
-### `components`
+MIT © [Mert Cukuren](https://mertjf.github.io/tailblocks/) - tailblocks Ready-to-use Tailwind Blocks
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+MIT © [Fabio Maienschein](https://maienschein.tech/) - putting those two together for simplicity
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+MIT © [nekdolan](https://github.com/nekdolan) - convert it all to nuxt

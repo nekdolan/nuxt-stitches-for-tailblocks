@@ -19,7 +19,7 @@ Vue.use({
     vueInstance.prototype.$download = function(list) {
       Promise.all(
         list.map((template) =>
-          fetch(`/templates/${template}.html`).then((response) => response.text())
+          fetch(`templates/${template}.html`).then((response) => response.text())
         )
       ).then((templateString) => {
         const html = templateString.join("");

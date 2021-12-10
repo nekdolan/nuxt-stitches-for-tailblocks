@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true,
-  target: 'static',
+  // target: 'static',
   head: {
     title: 'stitches2021',
     htmlAttrs: {
@@ -18,6 +18,14 @@ export default {
       { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.5.0/css/all.css' },
     ]
   },
+
+  // generate: {
+  //   dir: 'docs'
+  // },
+  //
+  // router: {
+  //   base: '/docs/'
+  // },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [

@@ -5,13 +5,13 @@
     >
       <h1 class="font-black mb-8 ml-2 pb-2">
         <a
-          href="/"
+          href="#"
           class="no-underline text-black no-underline text-black transition text-geen"
         >
           <img
-            src="/images/logo.svg"
+            src="images/logo.svg"
             class="inline-block mr-2 w-10 -mb-2"
-          />Stitches for tailblocks</a
+          />Nuxt Stitches for tailblocks</a
         >
       </h1>
       <div class="border-l-2 mx-2 mb-3 js-filter pl-3 border-black">
@@ -37,7 +37,7 @@
           class="js-snippet w-1/2 p-2"
         >
           <img
-            :src="`/images/${item.image}.png`"
+            :src="`images/${item.image}.png`"
             alt=""
             class="border border-gray-300 cursor-move hover:shadow transition-normal hover:translate-y-1 hover:border-black"
           />
@@ -71,7 +71,7 @@
             @click="removeItem(item.id)"
           ><i class='far fa-trash-alt pointer-events-none'></i></div>
           <img
-            :src="`/images/${item.image}.png`"
+            :src="`images/${item.image}.png`"
             alt=""
             class="border border-gray-300 cursor-move hover:shadow transition-normal hover:translate-y-1 hover:border-black"
           />
