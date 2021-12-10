@@ -1,6 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  ssr: false,
+  ssr: true,
+  target: 'static',
   head: {
     title: 'stitches2021',
     htmlAttrs: {
