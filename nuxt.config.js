@@ -1,7 +1,6 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true,
-  // target: 'static',
   head: {
     title: 'stitches2021',
     htmlAttrs: {
@@ -19,12 +18,13 @@ export default {
     ]
   },
 
+  // target: 'static',
   // generate: {
   //   dir: 'docs'
   // },
   //
   // router: {
-  //   base: '/docs/'
+  //   base: '/nuxt-stitches-for-tailblocks/'
   // },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
